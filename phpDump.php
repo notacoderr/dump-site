@@ -1,8 +1,11 @@
 <?php
+$min = (int) ($config->get('min') * 1200); #1200 = 1 min
+$this->getScheduler()->scheduleRepeatingTask(new CheckSubscriptionsTask($this), $min);
 
 namespace Johnmacrocraft\Newspaper\tasks;
 use Johnmacrocraft\Newspaper\Newspaper;
 use pocketmine\scheduler\Task;
+
 class CheckSubscriptionsTask extends Task {
 	/** @var Newspaper */
 	private $plugin;

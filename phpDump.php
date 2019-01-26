@@ -1,5 +1,19 @@
 <?php
 
+namespace Johnmacrocraft\Newspaper\tasks;
+use Johnmacrocraft\Newspaper\Newspaper;
+use pocketmine\scheduler\Task;
+class CheckSubscriptionsTask extends Task {
+	/** @var Newspaper */
+	private $plugin;
+	public function __construct(Newspaper $plugin) {
+		$this->plugin = $plugin;
+	}
+	public function onRun(int $currentTick) {
+		$this->plugin->checkSubscriptions();
+	}
+}
+
 public function setText(string $name) {
   foreach ($this->plugin->texts->getAll() as $level => $array) {
    foreach ($array as $loc => $type) {

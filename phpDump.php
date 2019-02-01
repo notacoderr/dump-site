@@ -49,3 +49,18 @@ public function addText(Vector3 $location, string $type = "title", $player = nul
 				break;
 		}
 }
+
+                $arr = [];
+                foreach($this->plugin->db['ban-item'] as $item => $value){
+                    array_push($arr, array('text' => '- ' . $item));
+                }
+                $packet = new ModalFormRequestPacket();
+                $packet->formId = 11119;
+                $packet->formData = json_encode([
+                        'type' => 'form',
+                        'title' => 'CraftBan List',
+                        'content' => 'This is List!!',
+                        'buttons' => $arr
+                ]);
+                $sender->sendDataPacket($packet);
+                break;
